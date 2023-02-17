@@ -1,14 +1,14 @@
 import type { NextPage } from 'next';
 import { Categories, PostCard, PostWidget } from '../components';
 import { getPosts } from '../services';
-import { Post } from '../components/PostCard.type';
+import { Post } from '../components/type.def';
 import { FeaturedPosts } from '../sections/';
 
 interface Posts {
   posts: Array<{ node: Post }>;
 }
 
-const Home: NextPage = ({ posts }: Posts) => {
+const Home = ({ posts }: Posts) => {
   return (
     <div className="container mx-auto px-10 mb-8">
       <FeaturedPosts />

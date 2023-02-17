@@ -1,4 +1,4 @@
-import { Post } from './PostCard.type';
+import { Post } from './type.def';
 import Link from 'next/link';
 import moment from 'moment';
 

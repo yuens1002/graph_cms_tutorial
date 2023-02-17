@@ -1,14 +1,7 @@
 import Image from 'next/image';
+import { Author } from './type.def';
 
 import { grpahCMSImageLoader } from '../util';
-
-export type Author = {
-  name: string;
-  photo?: {
-    url: string;
-  };
-  bio?: string;
-};
 
 const Author = ({ author }: { author: Author }) => (
   <div className="text-center mt-20 mb-8 p-12 relative rounded-lg bg-black bg-opacity-20">

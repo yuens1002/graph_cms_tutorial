@@ -3,8 +3,13 @@ import { useRouter } from 'next/router';
 
 import { getCategories, getCategoryPost } from '../../services';
 import { PostCard, Categories, Loader } from '../../components';
+import { Post } from '../../components/type.def';
 
-const CategoryPost = ({ posts }) => {
+const CategoryPost = ({
+  posts,
+}: {
+  posts: Array<{ node: Post }>;
+}) => {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -31,7 +36,11 @@ const CategoryPost = ({ posts }) => {
 export default CategoryPost;
 
 // Fetch data at build time
-export async function getStaticProps({ params }) {
+export async function getStaticProps({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const posts = await getCategoryPost(params.slug);
 
   return {
@@ -44,7 +53,9 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const categories = await getCategories();
   return {
-    paths: categories.map(({ slug }) => ({ params: { slug } })),
+    paths: categories.map(({ slug }: { slug: string }) => ({
+      params: { slug },
+    })),
     fallback: true,
   };
 }

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { Post } from '../../components/PostCard.type';
+import { Post } from '../../components/type.def';
 import { useEffect, useState } from 'react';
 
 import {
@@ -69,7 +69,11 @@ const PostDetails = ({ post }: { post: Post }) => {
 export default PostDetails;
 
 // Fetch data at build time
-export async function getStaticProps({ params }) {
+export async function getStaticProps({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const data = await getPostDetails(params.slug);
   return {
     props: {
@@ -83,7 +87,11 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const posts = await getPosts();
   return {
-    paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
+    paths: posts.map(
+      ({ node: { slug } }: { node: { slug: string } }) => ({
+        params: { slug },
+      })
+    ),
     fallback: true,
   };
 }

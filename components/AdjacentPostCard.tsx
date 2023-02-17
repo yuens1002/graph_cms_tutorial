@@ -1,7 +1,14 @@
 import moment from 'moment';
 import Link from 'next/link';
+import { Post } from './type.def';
 
-const AdjacentPostCard = ({ post, position }) => (
+const AdjacentPostCard = ({
+  post,
+  position,
+}: {
+  post: Post;
+  position: string;
+}) => (
   <>
     <div
       className="absolute rounded-lg bg-center bg-no-repeat bg-cover shadow-md inline-block w-full h-72"
@@ -23,7 +30,7 @@ const AdjacentPostCard = ({ post, position }) => (
       <div className="absolute arrow-btn bottom-5 text-center py-3 cursor-pointer bg-pink-600 left-4 rounded-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 text-white w-full"
+          className="h-6 w-6 text-white"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -41,7 +48,7 @@ const AdjacentPostCard = ({ post, position }) => (
       <div className="absolute arrow-btn bottom-5 text-center py-3 cursor-pointer bg-pink-600 right-4 rounded-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 text-white w-full"
+          className="h-6 w-6 text-white"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"

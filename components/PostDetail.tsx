@@ -1,6 +1,6 @@
 import moment from 'moment';
 import parse from 'html-react-parser';
-import { Post } from '../components/PostCard.type';
+import { Post } from './type.def';
 
 const PostDetail = ({ post }: { post: Post }) => {
   return (

@@ -1,8 +1,9 @@
 import moment from 'moment';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Post } from './type.def';
 
-const FeaturedPostCard = ({ post }) => (
+const FeaturedPostCard = ({ post }: { post: Post }) => (
   <div className="relative h-72">
     <div
       className="absolute rounded-lg bg-center bg-no-repeat bg-cover shadow-md inline-block w-full h-72"
@@ -17,14 +18,16 @@ const FeaturedPostCard = ({ post }) => (
         {post.title}
       </p>
       <div className="flex items-center absolute bottom-5 w-full justify-center">
-        <Image
-          unoptimized
-          alt={post.author.name}
-          height="30"
-          width="30"
-          className="align-middle drop-shadow-lg rounded-full"
-          src={post.author.photo.url}
-        />
+        {post.author?.photo?.url && (
+          <Image
+            unoptimized
+            alt={post.author.name}
+            height="30"
+            width="30"
+            className="align-middle drop-shadow-lg rounded-full"
+            src={post.author.photo.url}
+          />
+        )}
         <p className="inline align-middle text-white text-shadow ml-2 font-medium">
           {post.author.name}
         </p>

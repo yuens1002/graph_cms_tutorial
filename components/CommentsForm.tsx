@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { submitComment } from '../services';
 
-const CommentsForm = ({ slug }) => {
+const CommentsForm = ({ slug }: { slug: string }) => {
   const [error, setError] = useState(false);
   const [localStorage, setLocalStorage] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -13,7 +13,13 @@ const CommentsForm = ({ slug }) => {
   });
 
   useEffect(() => {
-    setLocalStorage(window.localStorage);
+    const name = window.localStorage.getItem('name');
+    const email = window.localStorage.getItem('email');
+    const storeData = window.localStorage.getItem('storeData');
+    if (name && email) {
+      // @ts-ignore: Unreachable code error
+      setLocalStorage(window.localStorage);
+    }
     const initalFormData = {
       name: window.localStorage.getItem('name'),
       email: window.localStorage.getItem('email'),
@@ -21,10 +27,11 @@ const CommentsForm = ({ slug }) => {
         window.localStorage.getItem('name') ||
         window.localStorage.getItem('email'),
     };
+    // @ts-ignore: Unreachable code error
     setFormData(initalFormData);
   }, []);
 
-  const onInputChange = ({ target }) => {
+  const onInputChange = ({ target }: { target: any }) => {
     if (target.type === 'checkbox') {
       setFormData((prevState) => ({
         ...prevState,
@@ -53,10 +60,14 @@ const CommentsForm = ({ slug }) => {
     };
 
     if (storeData) {
+      // @ts-ignore: Unreachable code error
       localStorage.setItem('name', name);
+      // @ts-ignore: Unreachable code error
       localStorage.setItem('email', email);
     } else {
+      // @ts-ignore: Unreachable code error
       localStorage.removeItem('name');
+      // @ts-ignore: Unreachable code error
       localStorage.removeItem('email');
     }
 

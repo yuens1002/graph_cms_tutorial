@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 import parse from 'html-react-parser';
+import { Comment } from './type.def';
 
 import { getComments } from '../services';
 
-const Comments = ({ slug }) => {
-  const [comments, setComments] = useState([]);
+const Comments = ({ slug }: { slug: string }) => {
+  const [comments, setComments] = useState<Comment[]>([]);
 
   useEffect(() => {
     getComments(slug).then((result) => {
