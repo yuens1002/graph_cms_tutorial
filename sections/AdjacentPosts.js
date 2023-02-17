@@ -3,8 +3,11 @@ import { useState, useEffect } from 'react';
 import { AdjacentPostCard } from '../components';
 import { getAdjacentPosts } from '../services';
 
-const AdjacentPosts = ({ createdAt, slug }) => {
-  const [adjacentPost, setAdjacentPost] = useState(null);
+const AdjacentPosts = ({
+  createdAt,
+  slug,
+}) => {
+  const [adjacentPost, setAdjacentPost] = useState<Post>();
   const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
@@ -18,7 +21,7 @@ const AdjacentPosts = ({ createdAt, slug }) => {
     <div className="grid grid-cols-1 lg:grid-cols-8 gap-12 mb-8">
       {dataLoaded && (
         <>
-          {adjacentPost.previous && (
+          {adjacentPost?.previous && (
             <div
               className={`${
                 adjacentPost.next
