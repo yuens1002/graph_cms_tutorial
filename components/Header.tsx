@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 
 import Link from 'next/link';
 import { getCategories } from '../services';
+import { Category } from '../components/type.def';
 
 const Header = () => {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
     getCategories().then((newCategories) => {
