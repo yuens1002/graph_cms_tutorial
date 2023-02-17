@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import moment from 'moment';
 import Link from 'next/link';
-import { Post } from '../components/PostCard.type';
+import { Post } from './type.def';
 
 type PostWidgetProps = {
   categories?: string[];
